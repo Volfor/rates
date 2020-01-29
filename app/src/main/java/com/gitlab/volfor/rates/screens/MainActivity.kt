@@ -1,7 +1,8 @@
-package com.gitlab.volfor.rates
+package com.gitlab.volfor.rates.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gitlab.volfor.rates.R
 
 class MainActivity : AppCompatActivity() {
 
