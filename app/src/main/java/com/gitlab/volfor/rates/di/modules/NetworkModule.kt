@@ -1,5 +1,7 @@
 package com.gitlab.volfor.rates.di.modules
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.gitlab.volfor.rates.BuildConfig
 import com.gitlab.volfor.rates.api.RatesService
 import dagger.Module
@@ -14,8 +16,9 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient =
-        OkHttpClient.Builder().build() // TODO: add logging interceptor
+    fun provideOkHttpClient(context: Context): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(ChuckerInterceptor(context))
+        .build()
 
     @Singleton
     @Provides

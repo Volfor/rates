@@ -54,6 +54,12 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation "com.squareup.retrofit2:converter-moshi:2.6.0"
 
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    debugImplementation "com.github.ChuckerTeam.Chucker:library:3.1.1"
+    releaseImplementation "com.github.ChuckerTeam.Chucker:library-no-op:3.1.1"
+
     // Testing
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
