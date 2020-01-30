@@ -1,5 +1,6 @@
 package com.gitlab.volfor.rates.di.modules
 
+import com.gitlab.volfor.rates.BuildConfig
 import com.gitlab.volfor.rates.api.RatesService
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://revolut.duckdns.org/") // TODO: specify API base url
+        .baseUrl(BuildConfig.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
