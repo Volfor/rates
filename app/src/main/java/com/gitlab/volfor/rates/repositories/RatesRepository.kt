@@ -1,8 +1,6 @@
-package com.gitlab.volfor.rates.data.repositories
+package com.gitlab.volfor.rates.repositories
 
-import com.gitlab.volfor.rates.data.Result.Error
-import com.gitlab.volfor.rates.data.Result.Success
-import com.gitlab.volfor.rates.data.api.RatesService
+import com.gitlab.volfor.rates.api.RatesService
 import com.gitlab.volfor.rates.utils.CoroutineContextProviders
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -14,11 +12,10 @@ class RatesRepository @Inject constructor(
 ) {
     suspend fun fetchRates(baseCurrency: String) = withContext(coroutineContextProviders.IO) {
         try {
-            val response = ratesService.getRates(baseCurrency)
-            Success(response.rates)
+            ratesService.getRates(baseCurrency).rates
         } catch (e: Exception) {
-            Timber.d(e)
-            Error
+            Timber.w(e)
+            null
         }
     }
 }

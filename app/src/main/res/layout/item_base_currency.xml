@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.gitlab.volfor.rates.screens.rates.item.CurrencyItem" />
+            type="com.gitlab.volfor.rates.screens.rates.item.BaseCurrencyItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +35,9 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:hint="0"
-            android:text="@{item.totalAmount}"
+            android:text="@={item.amount}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
