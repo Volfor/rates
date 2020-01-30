@@ -1,4 +1,4 @@
-package com.gitlab.volfor.rates.api
+package com.gitlab.volfor.rates.data.api
 
 data class RatesResponse(
     val base: String,

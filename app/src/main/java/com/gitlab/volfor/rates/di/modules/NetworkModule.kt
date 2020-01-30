@@ -3,7 +3,7 @@ package com.gitlab.volfor.rates.di.modules
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.gitlab.volfor.rates.BuildConfig
-import com.gitlab.volfor.rates.api.RatesService
+import com.gitlab.volfor.rates.data.api.RatesService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

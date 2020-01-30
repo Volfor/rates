@@ -1,4 +1,4 @@
-package com.gitlab.volfor.rates.api
+package com.gitlab.volfor.rates.data.api
 
 import retrofit2.http.GET
 import retrofit2.http.Query
