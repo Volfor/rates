@@ -19,7 +19,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("") // TODO: specify API base url
+        .baseUrl("https://revolut.duckdns.org/") // TODO: specify API base url
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
