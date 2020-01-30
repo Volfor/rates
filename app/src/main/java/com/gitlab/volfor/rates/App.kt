@@ -6,6 +6,7 @@ import com.gitlab.volfor.rates.di.DaggerAppComponent
 
 class App : Application() {
 
-    val appComponent: AppComponent = DaggerAppComponent.create()
-
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.factory().create(applicationContext)
+    }
 }

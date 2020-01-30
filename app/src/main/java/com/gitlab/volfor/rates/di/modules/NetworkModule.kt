@@ -13,24 +13,19 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .build() // TODO: add logging interceptor
-    }
+    fun provideOkHttpClient(): OkHttpClient =
+        OkHttpClient.Builder().build() // TODO: add logging interceptor
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("") // TODO: specify API base url
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .build()
-    }
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl("") // TODO: specify API base url
+        .client(okHttpClient)
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build()
 
     @Singleton
     @Provides
-    fun provideRatesService(retrofit: Retrofit): RatesService {
-        return retrofit.create(RatesService::class.java)
-    }
+    fun provideRatesService(retrofit: Retrofit): RatesService =
+        retrofit.create(RatesService::class.java)
 }
