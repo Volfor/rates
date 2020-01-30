@@ -5,7 +5,7 @@ import com.gitlab.volfor.rates.di.modules.AppModule
 import com.gitlab.volfor.rates.di.modules.NetworkModule
 import com.gitlab.volfor.rates.di.modules.RepositoriesModule
 import com.gitlab.volfor.rates.di.modules.ViewModelsModule
-import com.gitlab.volfor.rates.screens.MainActivity
+import com.gitlab.volfor.rates.screens.rates.RatesActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -19,6 +19,6 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-    fun inject(activity: MainActivity)
+    fun inject(activity: RatesActivity)
 
 }

@@ -3,7 +3,7 @@ package com.gitlab.volfor.rates.di.modules
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gitlab.volfor.rates.di.ViewModelFactory
-import com.gitlab.volfor.rates.screens.MainViewModel
+import com.gitlab.volfor.rates.screens.rates.RatesViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -28,6 +28,6 @@ abstract class ViewModelsModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    internal abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    @ViewModelKey(RatesViewModel::class)
+    internal abstract fun bindRatesViewModel(viewModel: RatesViewModel): ViewModel
 }
