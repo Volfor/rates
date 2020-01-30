@@ -1,6 +1,7 @@
 package com.gitlab.volfor.rates.di
 
 import android.content.Context
+import com.gitlab.volfor.rates.di.modules.AppModule
 import com.gitlab.volfor.rates.di.modules.NetworkModule
 import com.gitlab.volfor.rates.di.modules.RepositoriesModule
 import com.gitlab.volfor.rates.di.modules.ViewModelsModule
@@ -10,7 +11,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelsModule::class, NetworkModule::class, RepositoriesModule::class])
+@Component(modules = [AppModule::class, ViewModelsModule::class, NetworkModule::class, RepositoriesModule::class])
 interface AppComponent {
 
     @Component.Factory
