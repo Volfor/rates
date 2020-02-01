@@ -6,18 +6,24 @@
 
         <variable
             name="item"
-            type="com.gitlab.volfor.rates.screens.rates.item.BaseCurrencyItem" />
+            type="com.gitlab.volfor.rates.screens.rates.item.RateItem" />
+
+        <variable
+            name="listener"
+            type="com.gitlab.volfor.rates.screens.rates.item.RateItem.Listener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> listener.onRateClick(item)}"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/imgCurrency"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,12 +38,24 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="USD" />
 
+        <TextView
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:text="@{item.totalAmount}"
+            android:visibility="@{!item.isBase}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
             android:hint="0"
+            android:inputType="numberDecimal"
             android:text="@={item.amount}"
+            android:visibility="@{item.isBase}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

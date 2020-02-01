@@ -1,13 +1,17 @@
 package com.gitlab.volfor.rates.screens.rates
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.gitlab.volfor.rates.App
 import com.gitlab.volfor.rates.R
 import com.gitlab.volfor.rates.databinding.ActivityRatesBinding
+import kotlinx.android.synthetic.main.activity_rates.*
 import javax.inject.Inject
 
 class RatesActivity : AppCompatActivity() {
@@ -26,5 +30,13 @@ class RatesActivity : AppCompatActivity() {
 
         binding.vm = vm
         binding.lifecycleOwner = this
+
+        (rvRates.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
+
+        vm.scrollEvent.observe(this, Observer {
+            Handler().postDelayed({
+                rvRates.scrollToPosition(0)
+            }, 200)
+        })
     }
 }
