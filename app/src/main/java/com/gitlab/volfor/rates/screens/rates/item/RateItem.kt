@@ -5,7 +5,7 @@ import androidx.lifecycle.map
 import java.util.*
 
 data class RateItem(
-    val currency: String,
+    val currency: Currency,
     val rate: Double,
     val amount: MutableLiveData<String>,
     val isBase: Boolean = false
@@ -13,6 +13,9 @@ data class RateItem(
     interface Listener {
         fun onRateClick(item: RateItem)
     }
+
+    val currencyName: String
+        get() = currency.getDisplayName(Locale.ENGLISH)
 
     val totalAmount = amount.map {
         it.takeIf { it.isNotBlank() }

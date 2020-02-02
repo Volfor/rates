@@ -30,13 +30,24 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/txtCurrencyCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{item.currency}"
+            android:text="@{item.currency.currencyCode}"
             app:layout_constraintStart_toEndOf="@+id/imgCurrency"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="USD" />
+
+        <TextView
+            android:id="@+id/txtCurrencyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{item.currencyName}"
+            app:layout_constraintStart_toEndOf="@+id/imgCurrency"
+            app:layout_constraintTop_toBottomOf="@+id/txtCurrencyCode"
+            tools:text="US Dollar" />
 
         <TextView
             style="@style/Widget.AppCompat.EditText"
