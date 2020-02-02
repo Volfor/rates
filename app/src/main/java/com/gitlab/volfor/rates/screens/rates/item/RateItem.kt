@@ -20,8 +20,8 @@ data class RateItem(
     val totalAmount = amount.map {
         it?.takeIf { it.isNotBlank() }
             ?.toDoubleOrNull()
-            ?.let { multiplier ->
-                String.format(Locale.ENGLISH, "%.2f", rate * multiplier)
+            ?.let { amount ->
+                String.format(Locale.ENGLISH, "%.2f", amount * rate)
             }
     }
 }

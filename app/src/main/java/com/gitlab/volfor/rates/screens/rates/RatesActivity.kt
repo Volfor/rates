@@ -2,6 +2,7 @@ package com.gitlab.volfor.rates.screens.rates
 
 import android.os.Bundle
 import android.os.Handler
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,7 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.gitlab.volfor.rates.App
 import com.gitlab.volfor.rates.R
+import com.gitlab.volfor.rates.base.ViewEvent.RequestFocus
 import com.gitlab.volfor.rates.databinding.ActivityRatesBinding
+import com.gitlab.volfor.rates.utils.hideKeyboard
+import com.gitlab.volfor.rates.utils.showKeyboard
 import kotlinx.android.synthetic.main.activity_rates.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
@@ -37,15 +41,22 @@ class RatesActivity : AppCompatActivity() {
         (rvRates.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
 
         svRates.setOnTouchListener { _, _ ->
+            hideKeyboard()
             currentFocus?.clearFocus()
-            // TODO: hide keyboard
             false
         }
 
-        vm.scrollEvent.observe(this, Observer {
-            Handler().postDelayed({
-                svRates.scrollTo(0, 0)
-            }, 200)
+        vm.event.observe(this, Observer { event ->
+            when (event) {
+                is RequestFocus -> Handler().postDelayed({
+                    findViewById<EditText>(event.viewId)?.let {
+                        it.setSelection(it.text.length)
+                        showKeyboard(it)
+                    }
+
+                    svRates.scrollTo(0, 0)
+                }, 400)
+            }
         })
     }
 }

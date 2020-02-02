@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil
 import com.gitlab.volfor.rates.BR
 import com.gitlab.volfor.rates.R
+import com.gitlab.volfor.rates.base.BaseViewModel
+import com.gitlab.volfor.rates.base.ViewEvent
 import com.gitlab.volfor.rates.repositories.RatesRepository
 import com.gitlab.volfor.rates.screens.rates.item.RateItem
 import me.tatarka.bindingcollectionadapter2.ItemBinding
@@ -12,14 +14,12 @@ import javax.inject.Inject
 
 class RatesViewModel @Inject constructor(
     private val ratesRepository: RatesRepository
-) : ViewModel(), RateItem.Listener {
+) : BaseViewModel(), RateItem.Listener {
 
     private val baseCurrency = MutableLiveData<String>("EUR")
     private val amount = MutableLiveData<String>("100")
 
-    val scrollEvent = MutableLiveData<Boolean>()
-
-    val rates = baseCurrency.switchMap {
+    private val rates = baseCurrency.distinctUntilChanged().switchMap {
         ratesRepository.fetchRates(it).asLiveData()
     }
 
@@ -57,7 +57,7 @@ class RatesViewModel @Inject constructor(
 
         items.value = newList
 
-        scrollEvent.value = true
+        sendEvent(ViewEvent.RequestFocus(R.id.fAmount))
     }
 
     private fun getRatesItems(
