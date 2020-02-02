@@ -23,7 +23,7 @@
             android:id="@+id/imgCurrency"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:background="@color/colorAccent"
+            app:currencyFlag="@{item.currency.currencyCode}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
