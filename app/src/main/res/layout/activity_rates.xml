@@ -11,6 +11,7 @@
     </data>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/svRates"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/icons_attribution"
+                android:textColor="@color/bali_hai"
                 android:textSize="12sp"
                 android:visibility="@{vm.items != null}"
                 app:isLink="@{true}"

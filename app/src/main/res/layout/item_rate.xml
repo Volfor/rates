@@ -16,13 +16,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> listener.onRateClick(item)}"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/imgCurrency"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             app:currencyFlag="@{item.currency.currencyCode}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,29 +32,36 @@
 
         <TextView
             android:id="@+id/txtCurrencyCode"
+            style="@style/CurrencyTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@{item.currency.currencyCode}"
+            app:layout_constraintBottom_toTopOf="@+id/txtCurrencyName"
             app:layout_constraintStart_toEndOf="@+id/imgCurrency"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="USD" />
+            tools:text="@tools:sample/cities" />
 
         <TextView
             android:id="@+id/txtCurrencyName"
+            style="@style/CurrencySubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@{item.currencyName}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgCurrency"
             app:layout_constraintTop_toBottomOf="@+id/txtCurrencyCode"
-            tools:text="US Dollar" />
+            tools:text="@tools:sample/full_names" />
 
         <TextView
-            style="@style/Widget.AppCompat.EditText"
+            style="@style/RateEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="0"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/currency_amount_hint"
             android:text="@{item.totalAmount}"
             android:visibility="@{!item.isBase}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,15 +69,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            style="@style/RateEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="0"
-            android:inputType="numberDecimal"
+            android:hint="@string/currency_amount_hint"
             android:text="@={item.amount}"
             android:visibility="@{item.isBase}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

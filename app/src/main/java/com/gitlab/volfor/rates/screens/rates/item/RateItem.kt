@@ -18,7 +18,7 @@ data class RateItem(
         get() = currency.getDisplayName(Locale.ENGLISH)
 
     val totalAmount = amount.map {
-        it.takeIf { it.isNotBlank() }
+        it?.takeIf { it.isNotBlank() }
             ?.toDoubleOrNull()
             ?.let { multiplier ->
                 String.format(Locale.ENGLISH, "%.2f", rate * multiplier)

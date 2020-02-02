@@ -33,9 +33,15 @@ class RatesActivity : AppCompatActivity() {
 
         (rvRates.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
 
+        svRates.setOnTouchListener { _, _ ->
+            currentFocus?.clearFocus()
+            // TODO: hide keyboard
+            false
+        }
+
         vm.scrollEvent.observe(this, Observer {
             Handler().postDelayed({
-                rvRates.scrollToPosition(0)
+                svRates.scrollTo(0, 0)
             }, 200)
         })
     }
