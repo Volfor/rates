@@ -12,6 +12,7 @@ import com.gitlab.volfor.rates.App
 import com.gitlab.volfor.rates.R
 import com.gitlab.volfor.rates.databinding.ActivityRatesBinding
 import kotlinx.android.synthetic.main.activity_rates.*
+import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 class RatesActivity : AppCompatActivity() {
@@ -30,6 +31,8 @@ class RatesActivity : AppCompatActivity() {
 
         binding.vm = vm
         binding.lifecycleOwner = this
+
+        setSupportActionBar(toolbar)
 
         (rvRates.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
 
