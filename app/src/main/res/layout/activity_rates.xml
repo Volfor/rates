@@ -37,11 +37,11 @@
                 android:id="@+id/txtAttribution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autoLink="all"
                 android:padding="8dp"
                 android:text="@string/icons_attribution"
                 android:textSize="12sp"
                 android:visibility="@{vm.items != null}"
+                app:isLink="@{true}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvRates" />

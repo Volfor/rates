@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Rates</string>
-    <string name="icons_attribution">Icons made by <b>Freepik</b> from www.flaticon.com</string>
+    <string name="icons_attribution">Icons made by <a href='https://www.flaticon.com/authors/freepik'>Freepik</a> from <a href='https://www.flaticon.com/'>www.flaticon.com</a></string>
 </resources>
