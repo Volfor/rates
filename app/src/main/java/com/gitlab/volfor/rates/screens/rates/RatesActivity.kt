@@ -38,7 +38,10 @@ class RatesActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        (rvRates.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
+        rvRates.apply {
+            rvRates.setHasFixedSize(true)
+            (itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
+        }
 
         svRates.setOnTouchListener { _, _ ->
             hideKeyboard()

@@ -38,7 +38,7 @@ class RatesViewModel @Inject constructor(
         }
 
         override fun areContentsTheSame(old: RateItem, new: RateItem): Boolean {
-            return old.rate == new.rate
+            return old == new
         }
     }
 
